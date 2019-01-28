@@ -1,0 +1,14 @@
+package MovieDBAPI.TheMovieDBAPI;
+
+
+public class RestUtils {
+	
+	public static String path;
+	
+	// Sets Base URI
+	
+	public static void setBaseURI (String baseURI) {
+		RestAssured.
+	}
+
+}
