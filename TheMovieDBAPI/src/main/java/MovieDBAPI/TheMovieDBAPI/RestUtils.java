@@ -22,7 +22,7 @@ public class RestUtils {
 	
 	//reset the base URI to null after the tests
 	
-	public static void resetBaseURL() {
+	public static void resetBaseURI() {
 		RestAssured.baseURI = null;
 	}
 	
@@ -31,10 +31,31 @@ public class RestUtils {
         RestAssured.basePath = null;
     }
 	
-	 /* Set content type as JSON or XML before starting the test
+	 public static void  createSearchQueryPath(String searchTerm, String APIKey, String APIKeyValue, String param, String paramValue) {
+	        path = searchTerm + "?" + APIKey + "=" + APIKeyValue + "&" + param + "=" + paramValue;
+	    }
+	 
+	  public static Response getResponse() {
+	        //System.out.print("path: " + path +"\n");
+	        return RestAssured.get(path);
+	        
+	    }
+	  
+	  public static JsonPath getJsonPath (Response res) {
+	        String json = res.asString();
+	        //System.out.print("returned json: " + json +"\n");
+	        return new JsonPath(json);
+	    }
+
+	/*public static void setContentType(ContentType json) {
+	
+		
+	}*/
+	
+	 // Set content type as JSON or XML before starting the test
 	   
 	    public static void setContentType (ContentType Type){
-	        given().contentType(Type);
-	    }*/
+	        RestAssured.given().contentType(Type);
+	    }
 
 }
