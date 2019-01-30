@@ -79,10 +79,15 @@ public class MovieAPITests {
         HelperMethods.checkStatus200(res);
     	
     }
-
+    
+   /* @Test
+    public void T07_DuplicateValues() {
+    	HelperMethods.checkCount(jp);
+    }*/
+     
     @After
     public void afterTest (){
-        //Reset Values for base URL and path
+        //Reset Values
         RestUtils.resetBaseURI();
         RestUtils.resetBasePath();
     }

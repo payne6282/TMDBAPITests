@@ -13,7 +13,10 @@ public class SearchMoviesAPI {
 	//declaring Response and JsonPath objects.
     private static Response res = null; //Response object
     private static JsonPath jp = null; //JsonPath object
-
+    
+    //static String searchQuery = "Arachnophobia";
+    
+    
     //Setup operations
     @BeforeClass
     public static void setup() {
@@ -49,7 +52,7 @@ public class SearchMoviesAPI {
     	HelperMethods.checkStatus200(res);
     }
     
-    //Search query with space to check how space between queries are handled.Expected should be 200 OK.
+    //Search query with space to check how space between queries are handled
     @Test
     public void T03_SearchQueryWithSpace() {
     	String searchQuery = "ONE FLEW OVER THE CUCKOO'S NEST";
@@ -58,7 +61,7 @@ public class SearchMoviesAPI {
     	HelperMethods.checkStatus200(res);
     }
     
-    //Search query with special characters. Expected should be 200 OK with no search results and not a 404 not found page
+    //Search query with special characters. Expected should be 200 ok with no search results and not a 404 not found page
     @Test
     public void T04_SearchQueryWithSpecialCharacters() {
     	String searchQuery = "@%&^";
@@ -119,35 +122,14 @@ public class SearchMoviesAPI {
     	HelperMethods.checkStatus422(res, jp);
     }
     
-    /*Checking how the API responds on accessing a page number that does not exists. 
-     * Example - The search query 'cabin' gives out 5 pages. Wanted to check the response if we try with page = 7 etc. Expected result should be
-     * a 200 OK response with the results page set empty */
+    /*Checking how with a null query displays the results'. 
+     * The expected result should be a status 422 - UNPROCESSABLE ENTITY*/
     @Test
-    public void T10_UnreachablePageSearch() {
-    	String searchQuery = "cabin"; 
-    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "7" );	
+    public void T09_UnreachablePageSearch() {
+    	String searchQuery = ""; //passing null in query
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
     	responsePathSetUp();
-    	HelperMethods.checkStatus200(res);
+    	HelperMethods.checkStatus422(res, jp);
     }
     
-    /*Checking how the API responds on SQL injection given through the query. 
-     * Example - SQL Injection Based on 1=1 is Always True. So will try to give a query like this in the search parameter
-     * Expected result should be a 200 OK page with 0 search results. This is security based. */
-    @Test
-    public void T11_SQLInjectionSearch() {
-    	String searchQuery = "select * from movies where 1=1"; //Guess if their DB name is 'Movies'
-    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
-    	responsePathSetUp();
-    	HelperMethods.checkStatus200(res);
-    }
-   
-    /*Checking how the API responds on giving a space in the query. 
-     * Expected result should be a 200 OK page with 0 search results since space is considered a a string.*/
-    @Test
-    public void T12_OnlySpaceInQuerySearch() {
-    	String searchQuery = " "; 
-    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
-    	responsePathSetUp();
-    	HelperMethods.checkStatus200(res);
-    }
 }

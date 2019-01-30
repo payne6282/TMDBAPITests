@@ -49,7 +49,7 @@ public class SearchMoviesAPI {
     	HelperMethods.checkStatus200(res);
     }
     
-    //Search query with space to check how space between queries are handled.Expected should be 200 OK.
+    //Search query with space to check how space between queries are handled
     @Test
     public void T03_SearchQueryWithSpace() {
     	String searchQuery = "ONE FLEW OVER THE CUCKOO'S NEST";
@@ -58,7 +58,7 @@ public class SearchMoviesAPI {
     	HelperMethods.checkStatus200(res);
     }
     
-    //Search query with special characters. Expected should be 200 OK with no search results and not a 404 not found page
+    //Search query with special characters. Expected should be 200 ok with no search results and not a 404 not found page
     @Test
     public void T04_SearchQueryWithSpecialCharacters() {
     	String searchQuery = "@%&^";

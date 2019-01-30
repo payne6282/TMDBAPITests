@@ -22,7 +22,8 @@ public class MovieAPITests {
         RestUtils.setBasePath(Constants.BASE_PATH_MOVIESAPI); //Setup Base Path
         RestUtils.setContentType(ContentType.JSON); //Setup Content Type
         RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", Constants.API_KEY_VALUE, "language", "en-US"); //Construct the path
-        responsePathSetUp();
+        res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
     }
     
     public static void responsePathSetUp() {
@@ -79,10 +80,15 @@ public class MovieAPITests {
         HelperMethods.checkStatus200(res);
     	
     }
-
+    
+   /* @Test
+    public void T07_DuplicateValues() {
+    	HelperMethods.checkCount(jp);
+    }*/
+     
     @After
     public void afterTest (){
-        //Reset Values for base URL and path
+        //Reset Values
         RestUtils.resetBaseURI();
         RestUtils.resetBasePath();
     }

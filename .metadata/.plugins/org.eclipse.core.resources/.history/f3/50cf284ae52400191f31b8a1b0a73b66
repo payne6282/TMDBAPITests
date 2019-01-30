@@ -8,9 +8,6 @@ import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.json.JsonPath;
 import com.jayway.restassured.response.Response;
 
-
-/* The main purpose of this API end point test is to check how response results are handled. Example - Data which is given back. Checking multiple results,
- * correctness of the response etc*/
 public class GenreAPITests {
 	private Response res = null; //Response object
     private JsonPath jp = null; //JsonPath object
