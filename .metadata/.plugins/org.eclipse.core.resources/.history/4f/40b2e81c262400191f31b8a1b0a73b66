@@ -19,9 +19,9 @@ public class MovieAPITests {
     public void setup() {
     	
         RestUtils.setBaseURI(Constants.BASE_URL); //Setup Base URI
-        RestUtils.setBasePath(Constants.BASE_PATH_MOVIESAPI); //Setup Base Path
+        RestUtils.setBasePath("/3/movie/"); //Setup Base Path
         RestUtils.setContentType(ContentType.JSON); //Setup Content Type
-        RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", Constants.API_KEY_VALUE, "language", "en-US"); //Construct the path
+        RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US"); //Construct the path
         res = RestUtils.getResponse(); //Get response
         jp = RestUtils.getJsonPath(res); //Get JsonPath
     }

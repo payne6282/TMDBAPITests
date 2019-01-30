@@ -1,0 +1,9 @@
+package MovieDBAPI.TheMovieDBAPI;
+
+public class Constants {
+	
+	private final String BASE_URL_MOVIESAPI = "https://api.themoviedb.org";
+	private final String BASE_PATH_MOVIESAPI = "/3/movie/";
+	
+
+}
