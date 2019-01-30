@@ -11,8 +11,8 @@ import com.jayway.restassured.response.Response;
 public class MovieAPITests {
 	
 	//declaring Response and JsonPath objects.
-    private Response res = null; //Response object
-    private JsonPath jp = null; //JsonPath object
+    private static Response res = null; //Response object
+    private static JsonPath jp = null; //JsonPath object
     
     //Setup operations
     @Before
@@ -22,6 +22,11 @@ public class MovieAPITests {
         RestUtils.setBasePath(Constants.BASE_PATH_MOVIESAPI); //Setup Base Path
         RestUtils.setContentType(ContentType.JSON); //Setup Content Type
         RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", Constants.API_KEY_VALUE, "language", "en-US"); //Construct the path
+        res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    }
+    
+    public static void responsePathSetUp() {
         res = RestUtils.getResponse(); //Get response
         jp = RestUtils.getJsonPath(res); //Get JsonPath
     }
@@ -36,8 +41,7 @@ public class MovieAPITests {
     @Test
     public void T02_StatusCodeCheckNotFound() {
     	RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", "17d2a5e61e584f6831d211e746949a689", "language", "en-US");//Wrong api key passed
-    	res = RestUtils.getResponse(); //Get response
-        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    	responsePathSetUp();
     	HelperMethods.checkStatus401(res, jp);
     }
     
@@ -45,8 +49,7 @@ public class MovieAPITests {
     @Test
     public void T03_NullValueResponseCheck() {
     	RestUtils.createSearchQueryPathMovieAPI("", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US");//null movie id passed
-    	res = RestUtils.getResponse(); //Get response
-        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    	responsePathSetUp();
         HelperMethods.checkNullResponse(res, jp);
     }
     
@@ -54,8 +57,7 @@ public class MovieAPITests {
     @Test
     public void T04_WrongIdCheckResponse() {
     	RestUtils.createSearchQueryPathMovieAPI("abcd", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US");//invalid movie id passed
-    	res = RestUtils.getResponse(); //Get response
-        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    	responsePathSetUp();
         HelperMethods.checkNullResponse(res, jp);
     }
     
@@ -74,8 +76,7 @@ public class MovieAPITests {
     @Test
     public void T06_JsonResponseHasNullValue() {
     	RestUtils.createSearchQueryPathMovieAPI("433456", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US"); //movie id with null json values passed
-    	res = RestUtils.getResponse(); //Get response
-        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    	responsePathSetUp();
         HelperMethods.checkStatus200(res);
     	
     }

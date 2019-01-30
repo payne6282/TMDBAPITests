@@ -1,0 +1,124 @@
+package MovieDBAPI.TheMovieDBAPI;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.path.json.JsonPath;
+import com.jayway.restassured.response.Response;
+
+public class SearchMoviesAPI {
+	
+	//declaring Response and JsonPath objects.
+    private static Response res = null; //Response object
+    private static JsonPath jp = null; //JsonPath object
+    
+    //static String searchQuery = "Arachnophobia";
+    
+    
+    //Setup operations
+    @BeforeClass
+    public static void setup() {
+    	
+        RestUtils.setBaseURI(Constants.BASE_URL); //Setup Base URI
+        RestUtils.setBasePath(Constants.BASE_PATH_SearchMOVIEAPI); //Setup Base Path
+        RestUtils.setContentType(ContentType.JSON); //Setup Content Type
+        RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", "Arachnophobia", "page", "1" ); //Construct the path
+        responsePathSetUp();
+    }
+    
+    public static void responsePathSetUp() {
+        res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    }
+    
+    //checking the 200 response with all correct parameters and with just one result
+    @Test
+    public void T01_StatusCodeTest() {	
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", "Arachnophobia", "page", "1" ); //Construct the path
+        responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    /*checking the 200 response with all correct parameters and with multiple results with the search query = "the"
+     * this search result has over 101753 results with 5088 pages. Want to check how the api handles such a large number of result set
+     */
+    @Test
+    public void T02_MultipleResultsCheck() {
+    	String searchQuery = "the";
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    //Search query with space to check how space between queries are handled
+    @Test
+    public void T03_SearchQueryWithSpace() {
+    	String searchQuery = "ONE FLEW OVER THE CUCKOO'S NEST";
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    //Search query with special characters. Expected should be 200 ok with no search results and not a 404 not found page
+    @Test
+    public void T04_SearchQueryWithSpecialCharacters() {
+    	String searchQuery = "@%&^";
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    /*Search query with ampersand- '&' symbol. Since '&' is usually denoted in the API url to separate
+     *  the different parameters, wanted to check how a search query for a movie title having ampersand is handled
+     */
+    @Test
+    public void T05_SearchQueryWithAmpersand() {
+    	String searchQuery = "Pride & prejudice";
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    /*Search query with question mark- '?' symbol. Since '?' is usually marked in the API url to separate
+     *  the base url with the first parameter, wanted to check how a search query for a movie title having question mark is handled
+     */
+    @Test
+    public void T06_SearchQueryWithQuestionMark() {
+    	String searchQuery = "What Ever Happened to Baby Jane?";
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );		
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    /*Wanted to Check with a query having no search results. The expected search results should be 0 results and a 200 ok page, rather
+    than a 404 0r 401 */
+    @Test
+    public void T07_NoSearchResults() {
+    	String searchQuery = "hsgsds sfdsdfwer";
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    /*Checking how with a query having multiple pages and how a random page number is displayed with the query example - 'page=3'. 
+     * The expected search results should take the user to the direct page number requested*/
+    @Test
+    public void T08_RandomPageResults() {
+    	String searchQuery = "titanic"; //This query returns 102 results with 6 total pages. Will check if it will directly display the requested page number
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "5" );	
+    	responsePathSetUp();
+    	HelperMethods.checkStatus200(res);
+    }
+    
+    /*Checking how with a null query displays the results'. 
+     * The expected search results should take the user to the direct page number requested*/
+    @Test
+    public void T09_NullSearchQuery() {
+    	String searchQuery = ""; //passing null in query
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );	
+    	responsePathSetUp();
+    	HelperMethods.checkStatus422(res, jp);
+    }
+}

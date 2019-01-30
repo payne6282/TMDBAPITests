@@ -1,0 +1,34 @@
+package MovieDBAPI.TheMovieDBAPI;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.path.json.JsonPath;
+import com.jayway.restassured.response.Response;
+
+public class ListsAPITests {
+	
+	private Response post = null; //Response object
+    private JsonPath jp = null; //JsonPath object
+    
+    //Setup operations
+    @Before
+    public void setup() {
+    	
+        RestUtils.setBaseURI(Constants.BASE_URL); //Setup Base URI
+        RestUtils.setBasePath(Constants.BASE_PATH_ADDLISTAPI); //Setup Base Path
+        RestUtils.setContentType(ContentType.JSON); //Setup Content Type
+        RestUtils.createSearchQueryPathListsAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "session_id", Constants.LISTS_SESSIONID, "name", "Firstlist", "description", "Listcreated!",  "language", "en-US"); //Construct the path
+        post = RestUtils.postRequest(); //Get response
+        jp = RestUtils.getJsonPath(post); //Get JsonPath
+    }
+    
+  //checking the 200 response with all correct parameters
+    @Test
+    public void T01_StatusCodeTest() {
+    	HelperMethods.checkStatus200(res);
+    }
+    
+
+}

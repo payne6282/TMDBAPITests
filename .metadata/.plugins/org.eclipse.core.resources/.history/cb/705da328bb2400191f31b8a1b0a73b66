@@ -1,0 +1,37 @@
+package MovieDBAPI.TheMovieDBAPI;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.path.json.JsonPath;
+import com.jayway.restassured.response.Response;
+
+public class SearchMoviesAPI {
+	
+	//declaring Response and JsonPath objects.
+    private Response res = null; //Response object
+    private JsonPath jp = null; //JsonPath object
+    
+    static String searchQuery = "polar";
+    
+    //Setup operations
+    @Before
+    public void setup() {
+    	
+        RestUtils.setBaseURI(Constants.BASE_URL); //Setup Base URI
+        RestUtils.setBasePath(Constants.BASE_PATH_SearchMOVIEAPI); //Setup Base Path
+        RestUtils.setContentType(ContentType.JSON); //Setup Content Type
+        RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" ); //Construct the path
+        res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
+    }
+    
+    //checking the 200 response with all correct parameters
+    @Test
+    public void T01_StatusCodeTest() {
+    	RestUtils.createSearchQueryPathSearchMovieAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US", "query", searchQuery, "page", "1" );		
+    	HelperMethods.checkStatus200(res);
+    }
+
+}

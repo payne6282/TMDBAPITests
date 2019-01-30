@@ -17,9 +17,9 @@ public class GenreAPITests {
     public void setup() {
     	
         RestUtils.setBaseURI(Constants.BASE_URL); //Setup Base URI
-        RestUtils.setBasePath("/3/genre/movie/list?"); //Setup Base Path
+        RestUtils.setBasePath(Constants.BASE_PATH_GENRESAPI); //Setup Base Path
         RestUtils.setContentType(ContentType.JSON); //Setup Content Type
-        RestUtils.createSearchQueryPathGenreAPI("api_key", Constants.API_KEY_VALUE, "language", "en-US"); //Construct the path
+        RestUtils.createSearchQueryPathGenreAPI(Constants.API_KEY_PARAM, Constants.API_KEY_VALUE, "language", "en-US"); //Construct the path
         res = RestUtils.getResponse(); //Get response
         jp = RestUtils.getJsonPath(res); //Get JsonPath
     }

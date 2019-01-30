@@ -31,25 +31,43 @@ public class RestUtils {
 		RestAssured.basePath = null;
 	}
 
-	public static void  createSearchQueryPathMovieAPI(String searchTerm, String APIKey, String APIKeyValue, String param, String paramValue) {
-		path = searchTerm + "?" + APIKey + "=" + APIKeyValue + "&" + param + "=" + paramValue;
+	
+	//path construction for MOVIE API
+	public static void  createSearchQueryPathMovieAPI(String searchTerm, String APIKey, String APIKeyValue, String langParam, String langParamValue) {
+		path = searchTerm + "?" + APIKey + "=" + APIKeyValue + "&" + langParam + "=" + langParamValue;
 	}
 	
-	public static void createSearchQueryPathGenreAPI(String APIKey, String APIKeyValue, String param, String paramValue) {
-		path = "?" + APIKey + "=" + APIKeyValue + "&" + param + "=" + paramValue;
+	//path construction for GENRE API
+	public static void createSearchQueryPathGenreAPI(String APIKey, String APIKeyValue, String langParam, String langParamValue) {
+		path = "?" + APIKey + "=" + APIKeyValue + "&" + langParam + "=" + langParamValue;
+		
+	}
+	
+	//path construction for GENRE API
+	public static void createSearchQueryPathSearchMovieAPI(String APIKey, String APIKeyValue, String langParam, String langParamValue, String query, String queryName, String page, String pageNumber) {
+		path = "?" + APIKey + "=" + APIKeyValue + "&" + langParam + "=" + langParamValue + "&" + query + "=" + queryName + "&" + page + "=" + pageNumber;
 		
 	}
 
+	
 	public static Response getResponse() {
+		System.out.println("path: " +path);
 		return RestAssured.get(path);
 
 	}
+	
+	public static Response postRequest() {
+		return RestAssured.post(path);
+
+	}
+	
 
 	/*Convert the API response to string and return it
 	 * 
 	 */
 	public static JsonPath getJsonPath (Response res) {
 		String json = res.asString();
+		//System.out.println("Json results: " +json);
 		return new JsonPath(json);
 	}
 

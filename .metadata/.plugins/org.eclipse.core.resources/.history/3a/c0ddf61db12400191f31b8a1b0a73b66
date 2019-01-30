@@ -1,0 +1,17 @@
+package MovieDBAPI.TheMovieDBAPI;
+
+public class Constants {
+	
+	static String API_KEY_VALUE = "17d2a5e61e584f6831d211e746949a68";
+	static String BASE_URL = "https://api.themoviedb.org";
+	
+	//Session id for accessing lists
+	static String LISTS_SESSIONID = "73fce015a12f41d8d64540eef43203aec9fe4231";
+	
+	//Path for the movie API
+	static String BASE_PATH_MOVIESAPI = "/3/movie/";
+	
+	//path for the genre API
+	static String BASE_PATH_GENRESAPI = "/3/genre/movie/list?";
+
+}
