@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;list&apos; from expression &apos;(List&lt;Integer&gt;)jp.get(&quot;id&quot;)&apos;&#x0A;- Original project: &apos;TheMovieDBAPI&apos;&#x0A;- Variable name: &apos;list&apos;&#x0A;- Destination method: &apos;MovieDBAPI.TheMovieDBAPI.HelperMethods.getIdList()&apos;&#x0A;- Variable expression: &apos;(List&lt;Integer&gt;)jp.get(&quot;id&quot;)&apos;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;list&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src\/main\/java&lt;MovieDBAPI.TheMovieDBAPI{HelperMethods.java" name="list" replace="true" selection="1749 27" stamp="1548786054007" version="1.0"/>
+</session>

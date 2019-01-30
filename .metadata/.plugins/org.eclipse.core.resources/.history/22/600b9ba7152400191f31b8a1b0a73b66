@@ -1,0 +1,52 @@
+package MovieDBAPI.TheMovieDBAPI;
+import com.jayway.restassured.path.json.JsonPath;
+import com.jayway.restassured.response.Response;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+
+
+public class HelperMethods {
+	
+	
+    //Verify the http response status returned. Check Status Code is 200.
+    
+    public static void checkStatus200(Response res) {
+    	
+    	assertEquals("Status Check Failed!", 200, res.getStatusCode());
+    }
+    
+    //Check wrong value response. Example - Wrong API key sent
+    public static void checkStatus401(Response res, JsonPath jp) {
+    	//401 should be expected for unauthorized access
+    	assertEquals("Expected wrong params", 401, res.getStatusCode());
+    	System.out.println("Status code and message for invalid api key value: " +jp.getString("status_code") + ", " +jp.getString("status_message"));
+    }
+    
+    public static void checkJsonValueValidity(JsonPath jp) {
+    	String nameCheck = jp.getString("original_title");
+    	
+    	assertEquals("Wrong movie name", nameCheck , jp.get("original_title"));
+    }
+    
+    //Check null value response. Example - sending null value for movie id or for an invalid movie id which does not exist
+    public static void checkNullResponse(Response res, JsonPath jp) {
+    	//404 should be expected as the endpoint result should not be found because of the null value being passed
+    	assertEquals("Expected null values", 404, res.getStatusCode());
+    	System.out.println("Status code and message for movie id null value response or for movie id invalid: " +jp.getString("status_code") + ", " +jp.getString("status_message"));
+    }
+    
+    public static void checkCount(JsonPath jp) {
+    	List idCount = jp.get("name");
+    	System.out.println("This works here");
+    	int count = idCount.size();
+    	System.out.println("count: " +count);
+    }
+ 
+
+}

@@ -21,24 +21,70 @@ public class MovieAPITests {
         RestUtils.setBaseURI("https://api.themoviedb.org"); //Setup Base URI
         RestUtils.setBasePath("/3/movie/"); //Setup Base Path
         RestUtils.setContentType(ContentType.JSON); //Setup Content Type
-        RestUtils.createSearchQueryPath("522681-escape-room", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US"); //Construct the path
+        RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US"); //Construct the path
         res = RestUtils.getResponse(); //Get response
         jp = RestUtils.getJsonPath(res); //Get JsonPath
     }
     
+    //checking the 200 response with all correct parameters
     @Test
     public void T01_StatusCodeTest() {
     	HelperMethods.checkStatus200(res);
     }
     
+    //checking the 401 unauthorized response after the wrong API key passed
     @Test
     public void T02_StatusCodeCheckNotFound() {
-    	RestUtils.createSearchQueryPath("522681-escape-room", "api_key", "17d2a5e61e584f6831d211e746949a689", "language", "en-US");
+    	RestUtils.createSearchQueryPathMovieAPI("522681-escape-room", "api_key", "17d2a5e61e584f6831d211e746949a689", "language", "en-US");//Wrong api key passed
     	res = RestUtils.getResponse(); //Get response
         jp = RestUtils.getJsonPath(res); //Get JsonPath
-    	HelperMethods.checkStatus401(res);
+    	HelperMethods.checkStatus401(res, jp);
     }
     
+    //checking the 404 not found response if a null value is passed. Example - no movie id passed
+    @Test
+    public void T03_NullValueResponseCheck() {
+    	RestUtils.createSearchQueryPathMovieAPI("", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US");//null movie id passed
+    	res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
+        HelperMethods.checkNullResponse(res, jp);
+    }
+    
+    //Checking the 404 not found response with a movie id which does not exist
+    @Test
+    public void T04_WrongIdCheckResponse() {
+    	RestUtils.createSearchQueryPathMovieAPI("abcd", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US");//invalid movie id passed
+    	res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
+        HelperMethods.checkNullResponse(res, jp);
+    }
+    
+    
+    /*Checking the validity of a json response expected value. Example - checking the value of the movie title returned
+    against the expected correct value. */
+    @Test
+    public void T05_MovieNameCheck() {
+    	HelperMethods.checkJsonValueValidity(jp);
+    }
+    
+    /*Checking how the response is handled if there is any null values in the resulting json results. Example - the movie id
+     * 433456 has some values for homepage urls in the json response which is null. So we want to check how it is handled. This
+     * should return a 200 response.
+     */
+    @Test
+    public void T06_JsonResponseHasNullValue() {
+    	RestUtils.createSearchQueryPathMovieAPI("433456", "api_key", "17d2a5e61e584f6831d211e746949a68", "language", "en-US"); //movie id with null json values passed
+    	res = RestUtils.getResponse(); //Get response
+        jp = RestUtils.getJsonPath(res); //Get JsonPath
+        HelperMethods.checkStatus200(res);
+    	
+    }
+    
+   /* @Test
+    public void T07_DuplicateValues() {
+    	HelperMethods.checkCount(jp);
+    }*/
+     
     @After
     public void afterTest (){
         //Reset Values
