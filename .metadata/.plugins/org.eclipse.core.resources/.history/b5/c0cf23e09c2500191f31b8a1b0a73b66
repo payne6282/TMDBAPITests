@@ -9,16 +9,19 @@ public class RestUtils {
 	public static String path;
 
 	// Sets Base URI
+
 	public static void setBaseURI (String baseURI) {
 		RestAssured.baseURI = baseURI;
 	}
 
 	//sets base path
+
 	public static void setBasePath(String basePath) {
 		RestAssured.basePath = basePath;
 	}
 
 	//reset the base URI to null after the tests
+
 	public static void resetBaseURI() {
 		RestAssured.baseURI = null;
 	}
@@ -28,7 +31,6 @@ public class RestUtils {
 		RestAssured.basePath = null;
 	}
 	
-	//Setting content type as JSON
 	public static void setContentType (ContentType Type){
 		RestAssured.given().contentType(Type);
 	}

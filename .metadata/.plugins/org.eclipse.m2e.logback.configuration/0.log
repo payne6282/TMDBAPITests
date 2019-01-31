@@ -1197,3 +1197,39 @@
 2019-01-30 16:40:29,337 [Worker-361: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
 2019-01-30 16:40:29,337 [Worker-361: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2019-01-30 16:40:29,337 [Worker-361: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:06:02,333 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:06:02,335 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:06:02,335 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:06:02,336 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:06:13,983 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:06:13,983 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:06:13,984 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:06:13,984 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:07:16,935 [Worker-367: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:07:16,936 [Worker-367: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:07:16,936 [Worker-367: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:07:16,936 [Worker-367: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:07:50,958 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:07:50,958 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:07:50,958 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:07:50,958 [Worker-369: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:10:35,575 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:10:35,575 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:10:35,576 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:10:35,577 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:11:13,040 [Worker-375: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:11:13,040 [Worker-375: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:11:13,040 [Worker-375: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:11:13,040 [Worker-375: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:11:44,337 [Worker-372: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:11:44,337 [Worker-372: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:11:44,337 [Worker-372: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:11:44,337 [Worker-372: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:12:11,829 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:12:11,829 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:12:11,829 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:12:11,829 [Worker-374: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources
+2019-01-31 14:12:40,862 [Worker-376: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:12:40,862 [Worker-376: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/main/resources
+2019-01-31 14:12:40,863 [Worker-376: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-01-31 14:12:40,863 [Worker-376: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/smoorkothkayath/Api-AutomationTests/TheMovieDBAPI/src/test/resources

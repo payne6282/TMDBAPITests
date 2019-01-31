@@ -18,14 +18,14 @@ public class HelperMethods {
 		assertEquals("Expected wrong params", 401, res.getStatusCode());
 		System.out.println("Status code and message for invalid api key value: " +jp.getString("status_code") + ", " +jp.getString("status_message"));
 	}
-
+	
 	//Check null value response for search query
 	public static void checkStatus422(Response res, JsonPath jp) {
 		//401 should be expected for unauthorized access
 		assertEquals("Null results", 422, res.getStatusCode());
 	}
 
-	//Checking the title matches the movie name
+	//Checking the title matchesthe movie name
 	public static void checkJsonValueValidity(JsonPath jp) {
 		String nameCheck = jp.getString("original_title");
 
