@@ -4,7 +4,7 @@ public class Constants {
 	/* Contains the constants like URLs */
 
 	static String BASE_URL = "https://api.themoviedb.org"; //Base URL
-	static String API_KEY_VALUE = "17d2a5e61e584f6831d211e746949a68"; //API key value goes here
+	static String API_KEY_VALUE = ""; //API key value goes here
 	static String API_KEY_PARAM = "api_key"; //Api key param name
 
 	//Path for the movie API
