@@ -10,7 +10,7 @@ Steps to run -
 
 1. I have deleted my own API Key as told. So enter your own API Key, go to src/main/java and open Constants.java
 You can put the value for your own API key in the initializer - API_KEY_VALUE
-2. After entering the API key value, go to src/test/javat and there are 3 tests there -
+2. After entering the API key value, go to src/test/java and there are 3 tests there -
    1. GenreAPITests.java - These tests I wrote mainly on how to handle the API response results based on their Genre API 
    endpoint. (3 test cases)
    2. MovieAPITests.java - The tests here primarily focuses on the response codes. Like how the API handles a 404 or a 401 
