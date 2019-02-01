@@ -20,5 +20,5 @@ You can put the value for your own API key in the initializer - API_KEY_VALUE
 3. Right click on any of the files above as select 'run as junit'
 
 Hopefully this will run without a glitch and you can see the results. I was thinking of making a report, but it would
-beyond next week and I wanted to send this across within this week itself. Please let me know if you encounter any issues.
+go beyond next week and I wanted to send this across within this week itself. Please let me know if you encounter any issues.
    
